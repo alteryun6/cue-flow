@@ -33,5 +33,5 @@ $('pip').onclick=async()=>{
  }catch{$('pipNote').textContent='작은 창을 열지 못했어요. 현재 화면에서 수업을 이어가 주세요.';}
  finally{$('pip').disabled=false;}
 };
-$('leave').onclick=()=>action(async()=>{await db('acks/'+uid,'DELETE');clearInterval(timer);state=null;if(pipWindow)pipWindow.close();$('lesson').classList.add('hidden');$('setup').hidden=false;$('connect').disabled=false;msg('수업방에서 나왔습니다.');});
+$('leave').onclick=()=>{if(!confirm('수업방에서 나갈까요?'))return;return action(async()=>{await db('acks/'+uid,'DELETE');clearInterval(timer);state=null;if(pipWindow)pipWindow.close();$('lesson').classList.add('hidden');$('setup').hidden=false;$('connect').disabled=false;msg('수업방에서 나왔습니다.');});};
 </script></body></html>
